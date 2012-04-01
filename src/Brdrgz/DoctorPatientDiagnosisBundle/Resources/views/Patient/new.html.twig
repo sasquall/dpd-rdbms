@@ -1,12 +1,38 @@
 {% extends 'BrdrgzDoctorPatientDiagnosisBundle::layout.html.twig' %}
 
-{% block title %}DPD RDBMS - New Patient{% endblock %}
+{% block title %}DPD RDBMS - Patient Create{% endblock %}
 
 {% block content %}
-<h1>Patient creation</h1>
+<h1>Patient Create</h1>
 
 <form action="{{ path('patient_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {{ form_errors(form) }}
+    
+    <div class="form_container">
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.first_name, 'First Name') }}</div>
+            <div class="form_errors">{{ form_errors(form.first_name) }}</div>
+            <div class="form_input">{{ form_widget(form.first_name) }}</div>
+        </div>
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.last_name, 'Last Name') }}</div>
+            <div class="form_errors">{{ form_errors(form.last_name) }}</div>
+            <div class="form_input">{{ form_widget(form.last_name) }}</div>
+        </div>
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.age, 'Age') }}</div>
+            <div class="form_errors">{{ form_errors(form.age) }}</div>
+            <div class="form_input">{{ form_widget(form.age) }}</div>
+        </div>
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.doctor, 'Doctor') }}</div>
+            <div class="form_errors">{{ form_errors(form.doctor) }}</div>
+            <div class="form_input">{{ form_widget(form.doctor) }}</div>
+        </div>
+        <!-- diagnoses -->
+    </div>
+    
+    {{ form_rest(form) }}
     <p>
         <button type="submit">Create</button>
     </p>

@@ -1,12 +1,33 @@
 {% extends 'BrdrgzDoctorPatientDiagnosisBundle::layout.html.twig' %}
 
-{% block title %}DPD RDBMS - New Diagnosis{% endblock %}
+{% block title %}DPD RDBMS - Diagnosis Create{% endblock %}
 
 {% block content %}
-<h1>Diagnosis creation</h1>
+<h1>Diagnosis Create</h1>
 
 <form action="{{ path('diagnosis_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {{ form_errors(form) }}
+    
+    <div class="form_container">
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.name, 'Name') }}</div>
+            <div class="form_errors">{{ form_errors(form.name) }}</div>
+            <div class="form_input">{{ form_widget(form.name) }}</div>
+        </div>
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.reference_number, 'Ref. Number') }}</div>
+            <div class="form_errors">{{ form_errors(form.reference_number) }}</div>
+            <div class="form_input">{{ form_widget(form.reference_number) }}</div>
+        </div>
+        <div class="form_row">
+            <div class="form_label">{{ form_label(form.description, 'Description') }}</div>
+            <div class="form_errors">{{ form_errors(form.description) }}</div>
+            <div class="form_input">{{ form_widget(form.description) }}</div>
+        </div>
+    </div>
+    
+    {{ form_rest(form) }}
+    
     <p>
         <button type="submit">Create</button>
     </p>

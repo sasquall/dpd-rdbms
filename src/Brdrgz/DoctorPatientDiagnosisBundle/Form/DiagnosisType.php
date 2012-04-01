@@ -11,8 +11,8 @@ class DiagnosisType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
             ->add('reference_number')
+            ->add('description')
         ;
     }
 

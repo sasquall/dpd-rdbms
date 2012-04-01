@@ -30,18 +30,18 @@ class Diagnosis
     private $name;
 
     /**
-     * @var text $description
-     *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
-
-    /**
      * @var string $reference_number
      *
      * @ORM\Column(name="reference_number", type="string", length=7)
      */
     private $reference_number;
+
+    /**
+     * @var text $description
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
 		/**
 		 * @ORM\OneToMany(targetEntity="Patient", mappedBy="diagnosis")
@@ -85,26 +85,6 @@ class Diagnosis
     }
 
     /**
-     * Set description
-     *
-     * @param text $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * Get description
-     *
-     * @return text 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set reference_number
      *
      * @param string $referenceNumber
@@ -123,7 +103,27 @@ class Diagnosis
     {
         return $this->reference_number;
     }
-    
+
+    /**
+     * Set description
+     *
+     * @param text $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get description
+     *
+     * @return text 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+        
     /**
      * Add patients
      *

@@ -82,11 +82,6 @@ ul#demo-list a
     padding-right: 10px;
 }
 
-ul, ol
-{
-    padding-left: 20px;
-}
-
 li
 {
     padding-bottom: 18px;
@@ -157,7 +152,7 @@ ul li
     display: none;
 }
 
-input[type=text], input[type=password]
+input[type=text], input[type=password], textarea
 {
     border:      1px solid #DADADA;
     background:  white url(../images/field-background.gif) repeat-x left top;
@@ -165,6 +160,7 @@ input[type=text], input[type=password]
     color:       #565656;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
     font-size:   12px;
+    width:       155px;
 }
 
 .symfony-button-grey,
@@ -305,13 +301,76 @@ ul#menu
     display: inline;
 }
 
-.records_list
+.records_list, .record_properties
 {
     margin-left:  auto;
     margin-right: auto;
 }
 
+.record_properties
+{
+    margin-bottom:  20px;
+}
+
+.record_properties > tbody > tr > th
+{
+    text-align: left;
+}
+
+.record_properties > tbody > tr > td
+{
+    text-align: right;
+}
+
 .records_list > thead > tr > th
 {
     padding:  10px;
+}
+
+.records_list > tbody > tr
+{
+    text-align: left;
+}
+
+.records_list > tbody > tr > td
+{
+    padding:  5px;
+}
+
+.actions > li
+{
+    display:  inline;
+}
+
+
+.form_container
+{
+    margin-left:  auto;
+    margin-right: auto;
+    width:  300px;
+    height: auto;
+    overflow: scroll;
+    padding-bottom:  20px;
+}
+
+.form_row
+{
+    
+    text-align: center;
+    clear:  both;
+}
+
+.form_label
+{
+    float:  left;
+}
+
+.form_errors
+{
+    float:  left;
+}
+
+.form_input
+{
+    float:  right;
 }
