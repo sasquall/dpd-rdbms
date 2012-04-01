@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{{ asset('bundles/brdrgzdoctorpatientdiagnosis/css/style.css') }}" type="text/css" media="all" />
+        <title>{% block title %}DPD RDBMS{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+				<div id="header">
+						<ul id="tabs">
+								<li><a href="{{ path('patient') }}">Home</a></li>
+								<li><a href="{{ path('doctor') }}">Doctors</a></li>
+								<li><a href="{{ path('patient') }}">Patients</a></li>
+								<li><a href="{{ path('diagnosis') }}">Diagnoses</a></li>
+						</ul>
+				</div>
+				<div id="content">
+						{% block content %}
+						{% endblock %}
+				</div>
+				<div id="pagination">
+				</div>
+    </body>
+</html>

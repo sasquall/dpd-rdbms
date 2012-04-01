@@ -1,0 +1,47 @@
+{% extends 'BrdrgzDoctorPatientDiagnosisBundle::layout.html.twig' %}
+
+{% block title %}DPD RDBMS - Patients{% endblock %}
+
+{% block content %}
+<h1>Patients</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('patient_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.firstname }}</td>
+            <td>{{ entity.lastname }}</td>
+            <td>{{ entity.age }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('patient_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('patient_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('patient_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

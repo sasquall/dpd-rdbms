@@ -34,6 +34,7 @@ class appProdProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/Users/blake/Sites/dpd-rdbms/app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/Users/blake/Sites/dpd-rdbms/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/Users/blake/Sites/dpd-rdbms/app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/Users/blake/Sites/dpd-rdbms/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/Users/blake/Sites/dpd-rdbms/app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/Users/blake/Sites/dpd-rdbms/vendor/bundles/JMS/SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'BrdrgzDoctorPatientDiagnosisBundle', '/Users/blake/Sites/dpd-rdbms/app/Resources/BrdrgzDoctorPatientDiagnosisBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'BrdrgzDoctorPatientDiagnosisBundle', '/Users/blake/Sites/dpd-rdbms/src/Brdrgz/DoctorPatientDiagnosisBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', '/Users/blake/Sites/dpd-rdbms/app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
         return $instance;
     }
@@ -64,7 +65,7 @@ class appProdProjectContainer extends Container
     {
         $a = new \Doctrine\Common\EventManager();
         $a->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\MysqlSessionInit('UTF8'));
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'symfony', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'logging' => false, 'driverOptions' => array()), new \Doctrine\DBAL\Configuration(), $a, array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'dpdrdbms', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'logging' => false, 'driverOptions' => array()), new \Doctrine\DBAL\Configuration(), $a, array());
     }
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
@@ -74,17 +75,19 @@ class appProdProjectContainer extends Container
         $b->setNamespace('sf2orm_default_b6a94d301e58d8b5f4b1eb47396406a3');
         $c = new \Doctrine\Common\Cache\ArrayCache();
         $c->setNamespace('sf2orm_default_b6a94d301e58d8b5f4b1eb47396406a3');
-        $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array());
-        $d->setMetadataCacheImpl($a);
-        $d->setQueryCacheImpl($b);
-        $d->setResultCacheImpl($c);
-        $d->setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\DriverChain());
-        $d->setProxyDir('/Users/blake/Sites/dpd-rdbms/app/cache/prod/doctrine/orm/Proxies');
-        $d->setProxyNamespace('Proxies');
-        $d->setAutoGenerateProxyClasses(false);
-        $d->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        return $this->services['doctrine.orm.default_entity_manager'] = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $d);
+        $d = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $d->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver(new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($this->get('annotation_reader')), array(0 => '/Users/blake/Sites/dpd-rdbms/src/Brdrgz/DoctorPatientDiagnosisBundle/Entity')), 'Brdrgz\\DoctorPatientDiagnosisBundle\\Entity');
+        $e = new \Doctrine\ORM\Configuration();
+        $e->setEntityNamespaces(array('BrdrgzDoctorPatientDiagnosisBundle' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Entity'));
+        $e->setMetadataCacheImpl($a);
+        $e->setQueryCacheImpl($b);
+        $e->setResultCacheImpl($c);
+        $e->setMetadataDriverImpl($d);
+        $e->setProxyDir('/Users/blake/Sites/dpd-rdbms/app/cache/prod/doctrine/orm/Proxies');
+        $e->setProxyNamespace('Proxies');
+        $e->setAutoGenerateProxyClasses(false);
+        $e->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        return $this->services['doctrine.orm.default_entity_manager'] = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
     }
     protected function getDoctrine_Orm_Validator_UniqueService()
     {
@@ -122,7 +125,7 @@ class appProdProjectContainer extends Container
     }
     protected function getForm_CsrfProviderService()
     {
-        return $this->services['form.csrf_provider'] = new \Symfony\Component\Form\Extension\Csrf\CsrfProvider\SessionCsrfProvider($this->get('session'), 'ThisTokenIsNotSoSecretChangeIt');
+        return $this->services['form.csrf_provider'] = new \Symfony\Component\Form\Extension\Csrf\CsrfProvider\SessionCsrfProvider($this->get('session'), '69e3a428c00c5af33bceeaac5f788d98abbd30aa');
     }
     protected function getForm_FactoryService()
     {
@@ -648,13 +651,14 @@ class appProdProjectContainer extends Container
                 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'JMSSecurityExtraBundle' => 'JMS\\SecurityExtraBundle\\JMSSecurityExtraBundle',
+                'BrdrgzDoctorPatientDiagnosisBundle' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\BrdrgzDoctorPatientDiagnosisBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appProdProjectContainer',
             'database_driver' => 'pdo_mysql',
             'database_host' => 'localhost',
             'database_port' => '',
-            'database_name' => 'symfony',
+            'database_name' => 'dpdrdbms',
             'database_user' => 'root',
             'database_password' => '',
             'mailer_transport' => 'smtp',
@@ -662,7 +666,7 @@ class appProdProjectContainer extends Container
             'mailer_user' => '',
             'mailer_password' => '',
             'locale' => 'en',
-            'secret' => 'ThisTokenIsNotSoSecretChangeIt',
+            'secret' => '69e3a428c00c5af33bceeaac5f788d98abbd30aa',
             'router_listener.class' => 'Symfony\\Bundle\\FrameworkBundle\\EventListener\\RouterListener',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
@@ -678,7 +682,7 @@ class appProdProjectContainer extends Container
             'translation.loader.php.class' => 'Symfony\\Component\\Translation\\Loader\\PhpFileLoader',
             'translation.loader.yml.class' => 'Symfony\\Component\\Translation\\Loader\\YamlFileLoader',
             'translation.loader.xliff.class' => 'Symfony\\Component\\Translation\\Loader\\XliffFileLoader',
-            'kernel.secret' => 'ThisTokenIsNotSoSecretChangeIt',
+            'kernel.secret' => '69e3a428c00c5af33bceeaac5f788d98abbd30aa',
             'kernel.trust_proxy_headers' => false,
             'session.class' => 'Symfony\\Component\\HttpFoundation\\Session',
             'session.storage.native.class' => 'Symfony\\Component\\HttpFoundation\\SessionStorage\\NativeSessionStorage',

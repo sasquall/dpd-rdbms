@@ -1,0 +1,28 @@
+{% extends 'BrdrgzDoctorPatientDiagnosisBundle::layout.html.twig' %}
+
+{% block title %}DPD RDBMS - Edit Patient{% endblock %}
+
+{% block content %}
+<h1>Patient edit</h1>
+
+<form action="{{ path('patient_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('patient') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('patient_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

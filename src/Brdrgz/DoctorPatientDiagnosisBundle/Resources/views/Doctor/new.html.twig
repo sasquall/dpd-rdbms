@@ -1,0 +1,22 @@
+{% extends 'BrdrgzDoctorPatientDiagnosisBundle::layout.html.twig' %}
+
+{% block title %}DPD RDBMS - New Doctor{% endblock %}
+
+{% block content %}
+<h1>Doctor creation</h1>
+
+<form action="{{ path('doctor_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('doctor') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -33,6 +33,28 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
+       'brdrgz_doctorpatientdiagnosis_default_index' => true,
+       'diagnosis' => true,
+       'diagnosis_show' => true,
+       'diagnosis_new' => true,
+       'diagnosis_create' => true,
+       'diagnosis_edit' => true,
+       'diagnosis_update' => true,
+       'diagnosis_delete' => true,
+       'doctor' => true,
+       'doctor_show' => true,
+       'doctor_new' => true,
+       'doctor_create' => true,
+       'doctor_edit' => true,
+       'doctor_update' => true,
+       'doctor_delete' => true,
+       'patient' => true,
+       'patient_show' => true,
+       'patient_new' => true,
+       'patient_create' => true,
+       'patient_edit' => true,
+       'patient_update' => true,
+       'patient_delete' => true,
     );
 
     /**
@@ -154,5 +176,115 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_configurator_finalRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
+    }
+
+    private function getbrdrgz_doctorpatientdiagnosis_default_indexRouteInfo()
+    {
+        return array(array (  0 => 'name',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+    }
+
+    private function getdiagnosisRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/diagnosis/',  ),));
+    }
+
+    private function getdiagnosis_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/diagnosis',  ),));
+    }
+
+    private function getdiagnosis_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/diagnosis/new',  ),));
+    }
+
+    private function getdiagnosis_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/diagnosis/create',  ),));
+    }
+
+    private function getdiagnosis_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/diagnosis',  ),));
+    }
+
+    private function getdiagnosis_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/diagnosis',  ),));
+    }
+
+    private function getdiagnosis_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DiagnosisController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/diagnosis',  ),));
+    }
+
+    private function getdoctorRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/doctor/',  ),));
+    }
+
+    private function getdoctor_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/doctor',  ),));
+    }
+
+    private function getdoctor_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/doctor/new',  ),));
+    }
+
+    private function getdoctor_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/doctor/create',  ),));
+    }
+
+    private function getdoctor_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/doctor',  ),));
+    }
+
+    private function getdoctor_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/doctor',  ),));
+    }
+
+    private function getdoctor_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\DoctorController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/doctor',  ),));
+    }
+
+    private function getpatientRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/patient/',  ),));
+    }
+
+    private function getpatient_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/patient',  ),));
+    }
+
+    private function getpatient_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/patient/new',  ),));
+    }
+
+    private function getpatient_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/patient/create',  ),));
+    }
+
+    private function getpatient_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/patient',  ),));
+    }
+
+    private function getpatient_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/patient',  ),));
+    }
+
+    private function getpatient_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Brdrgz\\DoctorPatientDiagnosisBundle\\Controller\\PatientController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/patient',  ),));
     }
 }
