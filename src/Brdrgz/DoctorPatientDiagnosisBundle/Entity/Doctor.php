@@ -197,4 +197,14 @@ class Doctor
     {
         return $this->patients;
     }
+    
+    /**
+     * Get string identifier
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->last_name . ', ' . $this->first_name . ' (' . $this->degrees . ')';
+    }
 }
