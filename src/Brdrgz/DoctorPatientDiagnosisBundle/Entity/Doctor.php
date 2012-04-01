@@ -37,21 +37,21 @@ class Doctor
     private $last_name;
 
     /**
-     * @var varchar $degrees
+     * @var string $degrees
      *
      * @ORM\Column(name="degrees", type="string", length=255)
      */
     private $degrees;
 
     /**
-     * @var varchar $email
+     * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
 
     /**
-     * @var varchar $portrait
+     * @var text $portrait
      *
      * @ORM\Column(name="portrait", type="text", length=255)
      */
@@ -121,9 +121,9 @@ class Doctor
     /**
      * Set degrees
      *
-     * @param varchar $degrees
+     * @param string $degrees
      */
-    public function setDegrees(\varchar $degrees)
+    public function setDegrees($degrees)
     {
         $this->degrees = $degrees;
     }
@@ -131,7 +131,7 @@ class Doctor
     /**
      * Get degrees
      *
-     * @return varchar 
+     * @return string
      */
     public function getDegrees()
     {
@@ -141,9 +141,9 @@ class Doctor
     /**
      * Set email
      *
-     * @param varchar $email
+     * @param string $email
      */
-    public function setEmail(\varchar $email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }
@@ -151,7 +151,7 @@ class Doctor
     /**
      * Get email
      *
-     * @return varchar 
+     * @return string 
      */
     public function getEmail()
     {
@@ -161,9 +161,9 @@ class Doctor
     /**
      * Set portrait
      *
-     * @param varchar $portrait
+     * @param text $portrait
      */
-    public function setPortrait(\varchar $portrait)
+    public function setPortrait($portrait)
     {
         $this->portrait = $portrait;
     }
@@ -171,7 +171,7 @@ class Doctor
     /**
      * Get portrait
      *
-     * @return varchar 
+     * @return text 
      */
     public function getPortrait()
     {

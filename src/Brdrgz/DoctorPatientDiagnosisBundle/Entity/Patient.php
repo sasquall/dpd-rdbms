@@ -113,9 +113,9 @@ class Patient
     /**
      * Set age
      *
-     * @param tinyint $age
+     * @param smallint $age
      */
-    public function setAge(\tinyint $age)
+    public function setAge(\smallint $age)
     {
         $this->age = $age;
     }
@@ -123,7 +123,7 @@ class Patient
     /**
      * Get age
      *
-     * @return tinyint 
+     * @return smallint 
      */
     public function getAge()
     {

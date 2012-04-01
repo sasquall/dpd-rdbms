@@ -30,7 +30,7 @@ class Diagnosis
     private $name;
 
     /**
-     * @var tinytext $description
+     * @var text $description
      *
      * @ORM\Column(name="description", type="text")
      */
@@ -87,9 +87,9 @@ class Diagnosis
     /**
      * Set description
      *
-     * @param tinytext $description
+     * @param text $description
      */
-    public function setDescription(\tinytext $description)
+    public function setDescription($description)
     {
         $this->description = $description;
     }
@@ -97,7 +97,7 @@ class Diagnosis
     /**
      * Get description
      *
-     * @return tinytext 
+     * @return text 
      */
     public function getDescription()
     {
