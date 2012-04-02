@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Brdrgz\DoctorPatientDiagnosisBundle\Entity\Patient;
 use Brdrgz\DoctorPatientDiagnosisBundle\Form\PatientType;
 
+use DoctrineExtensions\Paginate\Paginate;
+
 /**
  * Patient controller.
  *
@@ -24,11 +26,38 @@ class PatientController extends Controller
      */
     public function indexAction()
     {
+        $request = $this->getRequest();
+        $page = $request->request->get('page', 1);
+        $show = $request->request->get('show', 10);
+        $offset = ($page-1)*$show;
+        $limitPerPage = $show;
+        
         $em = $this->getDoctrine()->getEntityManager();
+        
+        $qb = $em->createQueryBuilder()->select('p')->from('BrdrgzDoctorPatientDiagnosisBundle:Patient', 'p')->orderBy('p.id');
+        $dql = $qb->getDql();
+        $query = $em->createQuery($dql);
+        
+        $count = Paginate::getTotalQueryResults($query);
+        
+        if ($page > 1 && $count <= $show) {
+            $page = 1;
+            $offset = 0;
+        }
+        
+        $paginateQuery = Paginate::getPaginateQuery($query, $offset, $limitPerPage);
+        
+        $entities = $paginateQuery->getResult();
 
-        $entities = $em->getRepository('BrdrgzDoctorPatientDiagnosisBundle:Patient')->findAll();
+        //$entities = $em->getRepository('BrdrgzDoctorPatientDiagnosisBundle:Patient')->findAll();
 
-        return array('entities' => $entities);
+        return array(
+            'entities'  => $entities,
+            'action'    => 'index',
+            'show'      => $show,
+            'cur_pg'    => $page,
+            'tot_pg'    => ceil($count/$show)
+        );
     }
 
     /**
@@ -51,7 +80,9 @@ class PatientController extends Controller
 
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+            'delete_form' => $deleteForm->createView(),
+            'action'      => 'show'
+        );
     }
 
     /**
@@ -67,7 +98,8 @@ class PatientController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'action' => 'new'
         );
     }
 
@@ -96,7 +128,8 @@ class PatientController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'action' => 'create'
         );
     }
 
@@ -123,6 +156,7 @@ class PatientController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'action'      => 'edit'
         );
     }
 
@@ -161,6 +195,7 @@ class PatientController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'action'      => 'update'
         );
     }
 

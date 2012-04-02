@@ -374,3 +374,14 @@ ul#menu
 {
     float:  right;
 }
+
+.page_controls > p
+{
+    padding:  10px;
+    display:  inline;
+}
+
+input[name="page"]
+{
+    width:  10px;
+}

@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="{{ asset('bundles/brdrgzdoctorpatientdiagnosis/css/style.css') }}" type="text/css" media="all" />
         <title>{% block title %}DPD RDBMS{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('bundles/brdrgzdoctorpatientdiagnosis/css/style.css') }}" type="text/css" media="all" />
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -19,7 +19,21 @@
 						{% block content %}
 						{% endblock %}
 				</div>
-				<div id="pagination">
-				</div>
+				{% if (action == 'index') %}
+    				<div id="pagination">
+    				    <form action="{{ path(app.request.attributes.get('_route')) }}" method="post" class="page_controls">
+    				        <p>Page : 
+    				          <input name="page" type="text" value="{{ cur_pg }}" /> of {{ tot_pg }}
+    				        </p>
+    				        <p>Show : 
+    				          <select name="show" onchange="this.form.submit()">
+    				              <option value="10" {% if (show == '10') %}selected="selected"{% endif %}>10</option>
+    				              <option value="25" {% if (show == '25') %}selected="selected"{% endif %}>25</option>
+    				              <option value="50" {% if (show == '50') %}selected="selected"{% endif %}>50</option>
+    				          </select>
+    				        </p>
+    				    </form>
+    				</div>
+				{% endif %}
     </body>
 </html>
