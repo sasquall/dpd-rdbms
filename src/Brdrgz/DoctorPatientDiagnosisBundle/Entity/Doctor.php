@@ -57,16 +57,16 @@ class Doctor
      */
     private $portrait;
 
-		/**
-		 * @ORM\OneToMany(targetEntity="Patient", mappedBy="doctor")
-		 */
-		private $patients;
+    /**
+     * @ORM\OneToMany(targetEntity="Patient", mappedBy="doctor")
+     */
+    private $patients;
 
 
-		public function __construct()
-		{
-				$this->patients = new ArrayCollection();
-		}
+    public function __construct()
+    {
+        $this->patients = new ArrayCollection();
+    }
 
     /**
      * Get id
