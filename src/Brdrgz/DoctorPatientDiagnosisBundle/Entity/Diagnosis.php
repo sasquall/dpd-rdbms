@@ -43,10 +43,10 @@ class Diagnosis
      */
     private $description;
 
-		/**
-		 * @ORM\OneToMany(targetEntity="Patient", mappedBy="diagnosis")
-		 */
-		private $patients;
+    /**
+     * @ORM\OneToMany(targetEntity="Patient", mappedBy="diagnosis")
+     */
+    private $patients;
 
 
     public function __construct()
