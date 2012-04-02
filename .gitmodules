@@ -1,3 +1,4 @@
 [submodule "vendor/doctrine-extensions"]
 	path = vendor/doctrine-extensions
 	url = git@github.com:brdrgz/DoctrineExtensions.git
+	ignore = untracked
