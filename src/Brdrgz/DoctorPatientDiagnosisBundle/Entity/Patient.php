@@ -43,16 +43,16 @@ class Patient
      */
     private $age;
 
-		/**
-		 * @ORM\ManyToOne(targetEntity="Doctor", inversedBy="patients")
-		 * @ORM\JoinColumn(name="doctor_id", referencedColumnName="id")
-		 */
-		private $doctor;
+    /**
+     * @ORM\ManyToOne(targetEntity="Doctor", inversedBy="patients")
+     * @ORM\JoinColumn(name="doctor_id", referencedColumnName="id")
+     */
+    private $doctor;
 
-		/**
-		 * @ORM\OneToMany(targetEntity="Diagnosis", mappedBy="patient")
-		 */
-		private $diagnoses;
+    /**
+     * @ORM\OneToMany(targetEntity="Diagnosis", mappedBy="patient")
+     */
+    private $diagnoses;
 
 
     public function __construct()
