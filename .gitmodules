@@ -1,0 +1,3 @@
+[submodule "vendor/doctrine-extensions"]
+	path = vendor/doctrine-extensions
+	url = git://github.com/beberlei/DoctrineExtensions.git
