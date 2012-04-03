@@ -6,24 +6,18 @@
 <h1>Diagnosis Edit</h1>
 
 <form action="{{ path('diagnosis_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_errors(edit_form) }}
-    
     <div class="form_container">
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.name, 'Name') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.name) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.name) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.reference_number, 'Ref. Number') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.reference_number) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.reference_number) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.description, 'Description') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.description) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.description) }}</div>
-        </div>
+        <ul>
+            <li>{{ form_label(edit_form.name, 'Name') }} {{ form_widget(edit_form.name) }} 
+                <span class="form_errors">{{ form_errors(edit_form.name) }}</span>
+            </li>
+            <li>{{ form_label(edit_form.reference_number, 'Ref. Number') }} {{ form_widget(edit_form.reference_number) }} 
+                <span class="form_errors">{{ form_errors(edit_form.reference_number) }}</span>
+            </li>
+            <li>{{ form_label(edit_form.description, 'Description') }} {{ form_widget(edit_form.description) }} 
+                <span class="form_errors">{{ form_errors(edit_form.description) }}</span>
+            </li>
+        </ul>
     </div>
     
     {{ form_rest(edit_form) }}

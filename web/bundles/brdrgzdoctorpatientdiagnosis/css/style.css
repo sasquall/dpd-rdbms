@@ -152,7 +152,7 @@ ul li
     display: none;
 }
 
-input[type=text], input[type=password], textarea
+input[type=text], input[type=password], input[type=email], textarea
 {
     border:      1px solid #DADADA;
     background:  white url(../images/field-background.gif) repeat-x left top;
@@ -347,32 +347,20 @@ ul#menu
 {
     margin-left:  auto;
     margin-right: auto;
-    width:  300px;
+    width:  500px;
     height: auto;
     overflow: scroll;
     padding-bottom:  20px;
 }
 
-.form_row
+.form_container > ul > li
 {
-    
     text-align: center;
-    clear:  both;
-}
-
-.form_label
-{
-    float:  left;
 }
 
 .form_errors
 {
-    float:  left;
-}
-
-.form_input
-{
-    float:  right;
+    color:  red;
 }
 
 .page_controls > p

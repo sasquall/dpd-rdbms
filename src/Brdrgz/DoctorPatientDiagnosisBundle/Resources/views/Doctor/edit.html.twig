@@ -6,34 +6,24 @@
 <h1>Doctor Edit</h1>
 
 <form action="{{ path('doctor_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_errors(edit_form) }}
-    
     <div class="form_container">
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.first_name, 'First Name') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.first_name) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.first_name) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.last_name, 'Last Name') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.last_name) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.last_name) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.degrees, 'Degrees') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.degrees) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.degrees) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.email, 'Email') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.email) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.email) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(edit_form.portrait, 'Portrait') }}</div>
-            <div class="form_errors">{{ form_errors(edit_form.portrait) }}</div>
-            <div class="form_input">{{ form_widget(edit_form.portrait) }}</div>
-        </div>
+        <ul>
+            <li>{{ form_label(edit_form.first_name, 'First Name') }} {{ form_widget(edit_form.first_name) }} 
+                <span class="form_errors">{{ form_errors(edit_form.first_name) }}</span>
+            </li>
+            <li>{{ form_label(edit_form.last_name, 'Last Name') }} {{ form_widget(edit_form.last_name) }} 
+                <span class="form_errors">{{ form_errors(edit_form.last_name) }}</span>
+            </li>
+            <li>{{ form_label(edit_form.degrees, 'Degrees') }} {{ form_widget(edit_form.degrees) }} 
+                <span class="form_errors">{{ form_errors(edit_form.degrees) }}</span>
+            </li>
+            <li>{{ form_label(edit_form.email, 'Email') }} {{ form_widget(edit_form.email) }} 
+                <span class="form_errors">{{ form_errors(edit_form.first_name) }}</span>
+            </li>
+            <li>{{ form_label(edit_form.portrait, 'Portrait') }} {{ form_widget(edit_form.portrait) }} 
+                <span class="form_errors">{{ form_errors(edit_form.portrait) }}</span>
+            </li>
+        </ul>
     </div>
     
     {{ form_rest(edit_form) }}

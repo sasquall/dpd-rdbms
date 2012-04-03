@@ -5,6 +5,8 @@ namespace Brdrgz\DoctorPatientDiagnosisBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Brdrgz\DoctorPatientDiagnosisBundle\Entity\Diagnosis
  *
@@ -25,21 +27,27 @@ class Diagnosis
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     *
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @var string $reference_number
      *
-     * @ORM\Column(name="reference_number", type="string", length=7)
+     * @ORM\Column(name="reference_number", type="string", length=7, nullable=false)
+     *
+     * @Assert\Regex("/^[0-9A-Za-z]{3}[-][0-9A-Za-z]{3}$/")
      */
     private $reference_number;
 
     /**
      * @var text $description
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=false)
+     *
+     * @Assert\NotBlank()     
      */
     private $description;
 

@@ -5,6 +5,8 @@ namespace Brdrgz\DoctorPatientDiagnosisBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Brdrgz\DoctorPatientDiagnosisBundle\Entity\Doctor
  *
@@ -25,14 +27,18 @@ class Doctor
     /**
      * @var string $first_name
      *
-     * @ORM\Column(name="first_name", type="string", length=255)
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=false)
+     *
+     * @Assert\NotBlank()
      */
     private $first_name;
 
     /**
      * @var string $last_name
      *
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
+     *
+     * @Assert\NotBlank()
      */
     private $last_name;
 
@@ -46,7 +52,10 @@ class Doctor
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @ORM\Column(name="email", type="string", length=255, unique=true, nullable=false)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 

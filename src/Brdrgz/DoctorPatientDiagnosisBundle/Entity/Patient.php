@@ -5,11 +5,15 @@ namespace Brdrgz\DoctorPatientDiagnosisBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Brdrgz\DoctorPatientDiagnosisBundle\Entity\Patient
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Brdrgz\DoctorPatientDiagnosisBundle\Repository\PatientRepository")
+ *
+ * TODO : store age as binary representation of decimal value (Doctrine2 doesn't yet support tinyint / bit)
  */
 class Patient
 {
@@ -25,21 +29,30 @@ class Patient
     /**
      * @var string $first_name
      *
-     * @ORM\Column(name="first_name", type="string", length=255)
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=false)
+     * 
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(255)
      */
     private $first_name;
 
     /**
      * @var string $last_name
      *
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
+     *
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(255)
      */
     private $last_name;
 
     /**
      * @var smallint $age
      *
-     * @ORM\Column(name="age", type="smallint", length=1)
+     * @ORM\Column(name="age", type="smallint", length=3, nullable=false)
+     *
+     * @Assert\NotBlank()
+     * @Assert\MaxLength(3)
      */
     private $age;
 

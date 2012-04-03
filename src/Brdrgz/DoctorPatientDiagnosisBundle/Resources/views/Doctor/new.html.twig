@@ -6,34 +6,24 @@
 <h1>Doctor Create</h1>
 
 <form action="{{ path('doctor_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
-    
     <div class="form_container">
-        <div class="form_row">
-            <div class="form_label">{{ form_label(form.first_name, 'First Name') }}</div>
-            <div class="form_errors">{{ form_errors(form.first_name) }}</div>
-            <div class="form_input">{{ form_widget(form.first_name) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(form.last_name, 'Last Name') }}</div>
-            <div class="form_errors">{{ form_errors(form.last_name) }}</div>
-            <div class="form_input">{{ form_widget(form.last_name) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(form.degrees, 'Degrees') }}</div>
-            <div class="form_errors">{{ form_errors(form.degrees) }}</div>
-            <div class="form_input">{{ form_widget(form.degrees) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(form.email, 'Email') }}</div>
-            <div class="form_errors">{{ form_errors(form.email) }}</div>
-            <div class="form_input">{{ form_widget(form.email) }}</div>
-        </div>
-        <div class="form_row">
-            <div class="form_label">{{ form_label(form.portrait, 'Portrait') }}</div>
-            <div class="form_errors">{{ form_errors(form.portrait) }}</div>
-            <div class="form_input">{{ form_widget(form.portrait) }}</div>
-        </div>
+        <ul>
+            <li>{{ form_label(form.first_name, 'First Name') }} {{ form_widget(form.first_name) }} 
+                <span class="form_errors">{{ form_errors(form.first_name) }}</span>
+            </li>
+            <li>{{ form_label(form.last_name, 'Last Name') }} {{ form_widget(form.last_name) }} 
+                <span class="form_errors">{{ form_errors(form.last_name) }}</span>
+            </li>
+            <li>{{ form_label(form.degrees, 'Degrees') }} {{ form_widget(form.degrees) }} 
+                <span class="form_errors">{{ form_errors(form.degrees) }}</span>
+            </li>
+            <li>{{ form_label(form.email, 'Email') }} {{ form_widget(form.email) }} 
+                <span class="form_errors">{{ form_errors(form.first_name) }}</span>
+            </li>
+            <li>{{ form_label(form.portrait, 'Portrait') }} {{ form_widget(form.portrait) }} 
+                <span class="form_errors">{{ form_errors(form.portrait) }}</span>
+            </li>
+        </ul>
     </div>
     
     {{ form_rest(form) }}
