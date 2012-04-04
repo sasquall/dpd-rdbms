@@ -1,0 +1,28 @@
+{% extends 'BrdrgzDoctorPatientDiagnosisBundle::layout.html.twig' %}
+
+{% block title %}DPD RDBMS - Login{% endblock%}
+
+{% block content %}
+
+{% if error %}
+    <div class="form_errors">{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('login_check') }}" method="post">
+    <div class="form_container">
+        <ul>
+            <li>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </li>
+            <li>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" />
+            </li>
+        </ul>
+
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+{% endblock %}

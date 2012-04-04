@@ -7,14 +7,21 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-				<div id="header">
-						<ul id="tabs">
-								<li><a href="{{ path('patient') }}">Home</a></li>
-								<li><a href="{{ path('doctor') }}">Doctors</a></li>
-								<li><a href="{{ path('patient') }}">Patients</a></li>
-								<li><a href="{{ path('diagnosis') }}">Diagnoses</a></li>
-						</ul>
-				</div>
+        {% if (action == 'login') %}
+    	     <div id="header">
+    	         <h1>Login</h1>
+    	     </div>
+    	  {% else %}
+    				<div id="header">
+    						<ul id="tabs">
+    								<li><a href="{{ path('patient') }}">Home</a></li>
+    								<li><a href="{{ path('doctor') }}">Doctors</a></li>
+    								<li><a href="{{ path('patient') }}">Patients</a></li>
+    								<li><a href="{{ path('diagnosis') }}">Diagnoses</a></li>
+    								<li><a href="{{ path('logout') }}">Logout</a></li>
+    						</ul>
+    				</div>
+    		{% endif %}
 				<div id="content">
 						{% block content %}
 						{% endblock %}
